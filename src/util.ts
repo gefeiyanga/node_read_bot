@@ -1,6 +1,5 @@
 
 import CloudConvert from "cloudconvert";
-import { join } from "path";
 import { mp4Regex, titleRegex, outputDirectory, mobileUserAgent } from "./constants"
 
 export const getMp4 = async (url: string | null) => {
@@ -62,10 +61,10 @@ export const getMp4 = async (url: string | null) => {
     }
   }
   // 使用示例
-  const targetUrl =
-    "https://www.xiaohongshu.com/discovery/item/64df3a57000000000301df53?app_platform=ios&app_version=8.23&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQqjMUBuG4iBy_8XLtKBGdBP9L7kFjU2n_j0JowHYiXk=&author_share=1&xhsshare=WeixinSession&appuid=597849ad5e87e7647ffd8cbb&apptime=1725887659";
+  // const targetUrl =
+  //   "https://www.xiaohongshu.com/discovery/item/64df3a57000000000301df53?app_platform=ios&app_version=8.23&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQqjMUBuG4iBy_8XLtKBGdBP9L7kFjU2n_j0JowHYiXk=&author_share=1&xhsshare=WeixinSession&appuid=597849ad5e87e7647ffd8cbb&apptime=1725887659";
   
-  const mp4File = await scrapeHtml(url || targetUrl);
+  const mp4File = await scrapeHtml(url??'');
   return mp4File
 }
 

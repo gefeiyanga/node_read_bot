@@ -1,8 +1,9 @@
 import express, {Request, Response} from 'express';
 import { convertToMp3, getMp4 } from "../src/util";
+require('dotenv').config();
   
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8899;
 
 app.use(express.json());
 
@@ -37,5 +38,11 @@ app.post('/convert', async (req: Request, res: Response):Promise<any> => {
     res.status(500).json({ error: 'An error occurred during processing' });
   }
 });
+if (process.env.BACKEND === 'NODE_ENV') {
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+  });
+}
+
 
 export default app;
