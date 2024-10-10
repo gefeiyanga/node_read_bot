@@ -33,8 +33,15 @@ app.post('/convert', async (req: Request, res: Response):Promise<any> => {
         url: mp3File?.url
       }
     });
-  } catch (error) {
-    console.error('Error:', error);
+  } catch (error:any) {
+    if(error?.response?.data?.code === 'CREDITS_EXCEEDED') {
+      res.json({
+        message: '生成次数已用完，请明天再用',
+        code: '101',
+        result: null
+      });
+      return
+    } 
     res.status(500).json({ error: 'An error occurred during processing' });
   }
 });
