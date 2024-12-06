@@ -1,8 +1,8 @@
 // 使用正则表达式匹配.mp4链接
 export const mp4Regex = /https?:[^\s"']+sns-video[^\s"']+/g;
 
-// 使用正则表达式匹配 title 标签内容
-export const titleRegex = /<title>(.*?)<\/title>/i;
+// 使用正则表达式匹配《》标签内容
+export const titleRegex = /《(.*?)》/;
 
 export const outputDirectory = "./downloads";
 
