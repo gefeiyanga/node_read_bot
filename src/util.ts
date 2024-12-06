@@ -28,9 +28,9 @@ export const getMp4 = async (url: string | null) => {
       //   "window.__SETUP_SERVER_STATE__:",
       //   JSON.stringify(window.__SETUP_SERVER_STATE__)
       // );
-      let { title: fileName, video } = window.__SETUP_SERVER_STATE__
-        ?.LAUNCHER_SSR_STORE_PAGE_DATA?.noteData || { title: "xhs" };
-      fileName = fileName?.match(titleRegex)?.[1] || fileName;
+      let { title: fileName, video, desc } = window.__SETUP_SERVER_STATE__
+        ?.LAUNCHER_SSR_STORE_PAGE_DATA?.noteData;
+      fileName = (fileName || desc)?.match(titleRegex)?.[1] || fileName || desc;
 
       const { masterUrl: mp4Link } = video?.media?.stream?.h264?.[0] || {
         masterUrl: "",
